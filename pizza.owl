@@ -1,0 +1,259 @@
+Prefix(:=<http://www.pizza.com/ontologies/pizza.owl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.pizza.com/ontologies/pizza.owl>
+Annotation(rdfs:comment "A pizza ontology that describes various pizzas based on their toppings.")
+
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#CaperTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#DeepPanBase>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#GreenPepperTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#HamTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#JalapenoPepperTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#MozzarellaTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#MushroomTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#OliveTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#ParmesanTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#PepperTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#ThinAndCrispyBase>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping>))
+Declaration(Class(<http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping>))
+Declaration(Class(:AmericanHotPizza))
+Declaration(Class(:AmericanaPizza))
+Declaration(Class(:AnchovyTopping))
+Declaration(Class(:CheesyPizza))
+Declaration(Class(:MargheritaPizza))
+Declaration(Class(:NamedPizza))
+Declaration(Class(:PepperoniTopping))
+Declaration(Class(:Pizza))
+Declaration(Class(:PizzaBase))
+Declaration(Class(:PizzaTopping))
+Declaration(Class(:PrawnTopping))
+Declaration(Class(:ProbeInconsistentTopping))
+Declaration(Class(:RedPepperTopping))
+Declaration(Class(:SalamiTopping))
+Declaration(Class(:SeafoodTopping))
+Declaration(Class(:SohoPizza))
+Declaration(Class(:SpicyBeefTopping))
+Declaration(Class(:TunaTopping))
+Declaration(Class(:VegetarianPizza))
+Declaration(ObjectProperty(:hasBase))
+Declaration(ObjectProperty(:hasIngredient))
+Declaration(ObjectProperty(:hasTopping))
+Declaration(ObjectProperty(:isBaseOf))
+Declaration(ObjectProperty(:isIngredientOf))
+Declaration(ObjectProperty(:isToppingOf))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :hasBase (:hasBase)
+
+SubObjectPropertyOf(:hasBase :hasIngredient)
+InverseObjectProperties(:hasBase :isBaseOf)
+FunctionalObjectProperty(:hasBase)
+ObjectPropertyDomain(:hasBase :Pizza)
+ObjectPropertyRange(:hasBase :PizzaBase)
+
+# Object Property: :hasIngredient (:hasIngredient)
+
+InverseObjectProperties(:hasIngredient :isIngredientOf)
+TransitiveObjectProperty(:hasIngredient)
+
+# Object Property: :hasTopping (:hasTopping)
+
+SubObjectPropertyOf(:hasTopping :hasIngredient)
+InverseObjectProperties(:hasTopping :isToppingOf)
+ObjectPropertyDomain(:hasTopping :Pizza)
+ObjectPropertyRange(:hasTopping :PizzaTopping)
+
+# Object Property: :isBaseOf (:isBaseOf)
+
+SubObjectPropertyOf(:isBaseOf :isIngredientOf)
+ObjectPropertyDomain(:isBaseOf :PizzaBase)
+ObjectPropertyRange(:isBaseOf :Pizza)
+
+# Object Property: :isIngredientOf (:isIngredientOf)
+
+TransitiveObjectProperty(:isIngredientOf)
+
+# Object Property: :isToppingOf (:isToppingOf)
+
+SubObjectPropertyOf(:isToppingOf :isIngredientOf)
+ObjectPropertyDomain(:isToppingOf :PizzaTopping)
+ObjectPropertyRange(:isToppingOf :Pizza)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#CaperTopping> (CoberturaDeCaper)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#CaperTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping> (CoberturaDeQueijo)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping> :PizzaTopping)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#DeepPanBase> (BaseEspessa)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#DeepPanBase> :PizzaBase)
+DisjointClasses(<http://www.co-ode.org/ontologies/pizza/pizza.owl#DeepPanBase> <http://www.co-ode.org/ontologies/pizza/pizza.owl#ThinAndCrispyBase>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#GreenPepperTopping> (CoberturaDePimentaoVerde)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#GreenPepperTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#PepperTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#HamTopping> (HamTopping)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#HamTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#JalapenoPepperTopping> (CoberturaDeJalapeno)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#JalapenoPepperTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#PepperTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping> (CoberturaDeCarne)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping> :PizzaTopping)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#MozzarellaTopping> (CoberturaDeMozzarella)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#MozzarellaTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping>)
+DisjointClasses(<http://www.co-ode.org/ontologies/pizza/pizza.owl#MozzarellaTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#ParmesanTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#MushroomTopping> (CoberturaDeCogumelo)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#MushroomTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#OliveTopping> (CoberturaDeAzeitona)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#OliveTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#ParmesanTopping> (CoberturaDeParmesao)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#ParmesanTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#PepperTopping> (CoberturaDePimentao)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#PepperTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#ThinAndCrispyBase> (BaseFinaEQuebradica)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#ThinAndCrispyBase> :PizzaBase)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping> (CoberturaDeTomate)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping>)
+
+# Class: <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping> (CoberturaDeVegetais)
+
+SubClassOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping> :PizzaTopping)
+
+# Class: :AmericanHotPizza (:AmericanHotPizza)
+
+SubClassOf(:AmericanHotPizza :NamedPizza)
+SubClassOf(:AmericanHotPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#JalapenoPepperTopping>))
+SubClassOf(:AmericanHotPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#MozzarellaTopping>))
+SubClassOf(:AmericanHotPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping>))
+SubClassOf(:AmericanHotPizza ObjectSomeValuesFrom(:hasTopping :PepperoniTopping))
+
+# Class: :AmericanaPizza (:AmericanaPizza)
+
+SubClassOf(:AmericanaPizza :NamedPizza)
+SubClassOf(:AmericanaPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#MozzarellaTopping>))
+SubClassOf(:AmericanaPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping>))
+SubClassOf(:AmericanaPizza ObjectSomeValuesFrom(:hasTopping :PepperoniTopping))
+
+# Class: :AnchovyTopping (:AnchovyTopping)
+
+SubClassOf(:AnchovyTopping :SeafoodTopping)
+
+# Class: :CheesyPizza (:CheesyPizza)
+
+EquivalentClasses(:CheesyPizza ObjectIntersectionOf(:Pizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping>)))
+
+# Class: :MargheritaPizza (:MargheritaPizza)
+
+AnnotationAssertion(rdfs:comment :MargheritaPizza "A pizza that only has Mozarella and Tomato toppings")
+SubClassOf(:MargheritaPizza :NamedPizza)
+SubClassOf(:MargheritaPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#MozzarellaTopping>))
+SubClassOf(:MargheritaPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping>))
+
+# Class: :NamedPizza (:NamedPizza)
+
+SubClassOf(:NamedPizza :Pizza)
+
+# Class: :PepperoniTopping (:PepperoniTopping)
+
+SubClassOf(:PepperoniTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping>)
+
+# Class: :Pizza (:Pizza)
+
+SubClassOf(:Pizza ObjectSomeValuesFrom(:hasBase :PizzaBase))
+
+# Class: :PizzaBase (:PizzaBase)
+
+
+# Class: :PizzaTopping (:PizzaTopping)
+
+
+# Class: :PrawnTopping (:PrawnTopping)
+
+SubClassOf(:PrawnTopping :SeafoodTopping)
+
+# Class: :ProbeInconsistentTopping (:ProbeInconsistentTopping)
+
+AnnotationAssertion(rdfs:comment :ProbeInconsistentTopping "This class should be inconsistent when the ontology is classified.")
+SubClassOf(:ProbeInconsistentTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping>)
+SubClassOf(:ProbeInconsistentTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping>)
+
+# Class: :RedPepperTopping (:RedPepperTopping)
+
+SubClassOf(:RedPepperTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#PepperTopping>)
+
+# Class: :SalamiTopping (:SalamiTopping)
+
+SubClassOf(:SalamiTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping>)
+
+# Class: :SeafoodTopping (:SeafoodTopping)
+
+SubClassOf(:SeafoodTopping :PizzaTopping)
+
+# Class: :SohoPizza (:SohoPizza)
+
+SubClassOf(:SohoPizza :NamedPizza)
+SubClassOf(:SohoPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#MozzarellaTopping>))
+SubClassOf(:SohoPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#OliveTopping>))
+SubClassOf(:SohoPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#ParmesanTopping>))
+SubClassOf(:SohoPizza ObjectSomeValuesFrom(:hasTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping>))
+
+# Class: :SpicyBeefTopping (:SpicyBeefTopping)
+
+SubClassOf(:SpicyBeefTopping <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping>)
+
+# Class: :TunaTopping (:TunaTopping)
+
+SubClassOf(:TunaTopping :SeafoodTopping)
+
+# Class: :VegetarianPizza (:VegetarianPizza)
+
+EquivalentClasses(:VegetarianPizza ObjectIntersectionOf(:Pizza ObjectAllValuesFrom(:hasTopping ObjectUnionOf(<http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping>))))
+
+
+DisjointClasses(<http://www.co-ode.org/ontologies/pizza/pizza.owl#CaperTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#MushroomTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#OliveTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#PepperTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping>)
+DisjointClasses(<http://www.co-ode.org/ontologies/pizza/pizza.owl#CheeseTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#MeatTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#VegetableTopping> :SeafoodTopping)
+DisjointClasses(<http://www.co-ode.org/ontologies/pizza/pizza.owl#GreenPepperTopping> <http://www.co-ode.org/ontologies/pizza/pizza.owl#JalapenoPepperTopping> :RedPepperTopping)
+DisjointClasses(<http://www.co-ode.org/ontologies/pizza/pizza.owl#HamTopping> :PepperoniTopping :SalamiTopping :SpicyBeefTopping)
+DisjointClasses(:AmericanHotPizza :AmericanaPizza :MargheritaPizza :SohoPizza)
+DisjointClasses(:AnchovyTopping :PrawnTopping :TunaTopping)
+DisjointClasses(:Pizza :PizzaBase :PizzaTopping)
+)
